@@ -1,0 +1,23 @@
+.FooterDetails {
+  width: 90%;
+  margin: 70px auto;
+  height: auto;
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+}
+
+.heading {
+  padding: 10px 0;
+}
+
+.subHeading {
+  font-weight: 900;
+}
+
+.body {
+  text-align: justify;
+  line-height: 25px;
+}

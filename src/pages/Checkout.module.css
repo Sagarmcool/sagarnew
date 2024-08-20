@@ -1,0 +1,94 @@
+.checkoutContainer {
+ width: 90%;
+ margin: auto;
+ padding: 20px;
+ background-color: white;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 30px;
+ background-color: rgb(230, 230, 230);
+}
+
+.basicDetailsContainer {
+ max-width: 700px;
+ min-width: 300px;
+ width: 100%;
+ background-color: white;
+ border-radius: 10px;
+}
+
+.checkOutTitles {
+ background-color: orange;
+ border-radius: 10px 10px 0 0;
+ padding: 10px;
+ color: white;
+}
+
+.orderSummaryContainer {
+ max-width: 400px;
+ min-width: 300px;
+ width: 100%;
+ background-color: white;
+ border-radius: 10px;
+}
+
+.securePaymentContainer {
+ width: 90%;
+ margin: 10px auto 0 auto;
+ padding-bottom: 20px;
+ border-radius: 10px;
+ background-color: white;
+}
+
+.securePayInnerContainer {
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+ gap: 2px;
+ background-color: #737373;
+}
+
+.securePayInnerContainer > div {
+ width: 50%;
+ height: 100px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+ background-color: rgb(255, 242, 232);
+}
+
+.securePayInnerContainer > div:hover {
+ background-color: rgb(252, 218, 192);
+ transition: 0.5s all ease;
+}
+
+.trustBatchesContainer {
+ width: 95%;
+ margin: auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+ .trustBatchesContainer {
+  flex-direction: column;
+ }
+}
+
+.trustBatchesContainer > div {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
+ width: 100%;
+ max-width: 170px;
+}
+
+.trustBatchesContainer > p {
+ text-align: justify;
+ margin-bottom: 0;
+}

@@ -1,0 +1,14 @@
+.BlogDetailsContainer {
+ width: 90%;
+ margin: 100px auto 0 auto;
+}
+
+.blogTitle {
+ font-weight: bolder;
+ font-size: 17px;
+ margin: 15px 0;
+}
+
+.blogDescription {
+ text-align: justify;
+}

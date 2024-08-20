@@ -1,0 +1,21 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,700|Grand+Hotel');
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}

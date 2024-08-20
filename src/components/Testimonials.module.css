@@ -1,0 +1,14 @@
+.TestimonialsMain {
+ width: 90%;
+ height: auto;
+ margin: 20px auto 0px auto;
+ text-align: center;
+}
+
+.carouselConatiner {
+ margin: 20px auto;
+ display: flex;
+ justify-content: center;
+ overflow: hidden;
+ gap: 50px;
+}
