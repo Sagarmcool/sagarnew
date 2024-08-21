@@ -90,10 +90,24 @@ const Footer = () => {
      />
      <p className={styles.title}>Connect With Us</p>
      <div className={styles.socialIcons}>
-      <FacebookIcon className={styles.icon} />
-      <LinkedInIcon className={styles.icon} />
-      <XIcon className={styles.icon} />
-      <Instagram className={styles.icon} />
+      <Link
+       to='https://www.facebook.com/smartranxeducationcentre?mibextid=ZbWKwL'
+       target='_blank'
+      >
+       <FacebookIcon className={styles.icon} />
+      </Link>
+      <Link to='https://www.linkedin.com/company/smartranx/' target='_blank'>
+       <LinkedInIcon className={styles.icon} />
+      </Link>
+      <Link to='https://x.com/SmartranxEdu' target='_blank'>
+       <XIcon className={styles.icon} />{' '}
+      </Link>
+      <Link
+       to='https://www.instagram.com/smartranx?igsh=cHQ3a2xxYjhjamo='
+       target='_blank'
+      >
+       <Instagram className={styles.icon} />
+      </Link>
      </div>
     </div>
     <div className={styles.columns}>
@@ -107,20 +121,7 @@ const Footer = () => {
         alignItems: 'center',
        }}
       >
-       <CallIcon style={{ fontSize: '20px', marginRight: '10px' }} /> +91 99007
-       25205
-      </span>
-     </p>
-     <p className={styles.list}>
-      <span
-       style={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-       }}
-      >
-       <CallIcon style={{ fontSize: '20px', marginRight: '10px' }} /> +91 77950
-       98243
+       <CallIcon style={{ fontSize: '20px', marginRight: '10px' }} /> +1 256-607-9830
       </span>
      </p>
      <p className={styles.list}>

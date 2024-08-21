@@ -23,3 +23,42 @@
  border: 2px solid #737373;
  transition: all 0.3s ease-in-out;
 }
+
+.queryModal {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ background-color: rgba(0, 0, 0, 0.5);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ z-index: 1000;
+}
+
+.queryModalContent {
+ background-color: white;
+ padding: 20px;
+ border-radius: 5px;
+ text-align: center;
+}
+
+.queryModalContent p {
+ margin-bottom: 20px;
+ font-weight: bolder;
+}
+
+.queryModalContent button {
+ padding: 10px 20px;
+ background-color: #007bff;
+ color: white;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+}
+
+.queryModalContent button:hover {
+ background-color: red;
+ transition: all 0.5s linear;
+}

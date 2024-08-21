@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './BasicInformation.module.css'
 import InfoIcon from '@mui/icons-material/Info'
 
-const BasicInformation = ({ toggleVisibility, selectedBatch }) => {
+const BasicInformation = ({ orderSummaryDetails }) => {
  const [formData, setFormData] = useState({
   name: '',
   countryCode: '',
@@ -12,7 +12,6 @@ const BasicInformation = ({ toggleVisibility, selectedBatch }) => {
   enrollFor: '',
  })
  const [formErrors, setFormErrors] = useState({})
- //  const [basicInfoQueryStatus, setBasicInfoQueryStatus] = useState('')
 
  const handleChange = (e) => {
   const { name, value } = e.target
@@ -50,49 +49,35 @@ const BasicInformation = ({ toggleVisibility, selectedBatch }) => {
   e.preventDefault()
   const errors = validate()
   if (Object.keys(errors).length === 0) {
-   scrollToSection(e, 'securePayment')
-   toggleVisibility()
-   const basicInfoFormData = new FormData(e.target)
-   fetch('https://formspree.io/f/xrbzbbqn', {
-    headers: {
-     Accept: 'application/json',
-    },
-    method: 'POST',
-    body: basicInfoFormData,
-   })
-    .then((res) => {
-     if (res.ok) {
-      console.log('Proceed for Payment')
-     } else {
-      res.json().then((data) => {
-       if (Object.hasOwn(data, 'errors')) {
-        console.log(data.errors.map((err) => err.message).join(', '))
-       } else {
-        console.log('Failed to send email')
-       }
-      })
-     }
-    })
-    .catch(() => {
-     console.log('Failed to send email')
-    })
+   const candidateCourseData = { ...formData, ...orderSummaryDetails }
+   console.log('candidateCourseData:', candidateCourseData)
+   //  const basicInfoFormData = new FormData(e.target)
+   //  fetch('https://formspree.io/f/xrbzbbqn', {
+   //   headers: {
+   //    Accept: 'application/json',
+   //   },
+   //   method: 'POST',
+   //   body: basicInfoFormData,
+   //  })
+   //   .then((res) => {
+   //    if (res.ok) {
+   //     console.log('Proceed for Payment')
+   //    } else {
+   //     res.json().then((data) => {
+   //      if (Object.hasOwn(data, 'errors')) {
+   //       console.log(data.errors.map((err) => err.message).join(', '))
+   //      } else {
+   //       console.log('Failed to send email')
+   //      }
+   //     })
+   //    }
+   //   })
+   //   .catch(() => {
+   //    console.log('Failed to send email')
+   //   })
   } else {
    setFormErrors(errors)
   }
- }
-
- const scrollToSection = (e, id) => {
-  e.preventDefault()
-  const element = document.getElementById(id)
-  const offset = 50
-  const elementPosition =
-   element.getBoundingClientRect().top + window.pageYOffset
-  const offsetPosition = elementPosition - offset
-
-  window.scrollTo({
-   top: offsetPosition,
-   behavior: 'smooth',
-  })
  }
 
  return (
@@ -219,7 +204,12 @@ const BasicInformation = ({ toggleVisibility, selectedBatch }) => {
     }}
    >
     <button type='submit' className={styles.basicInfoProceedBtn}>
-     Proceed to Payment
+     <span style={{ fontSize: '18px' }}>
+      Pay {orderSummaryDetails.currency} {orderSummaryDetails.grandTotal} with
+     </span>
+     <span>
+      <img src='/images/stripe.png' alt='stripe' height='40px' />
+     </span>
     </button>
    </div>
   </form>

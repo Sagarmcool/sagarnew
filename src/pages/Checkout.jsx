@@ -7,7 +7,6 @@ import BasicInformation from '../components/BasicInformation'
 import OrderSummary from '../components/OrderSummary'
 
 const Checkout = () => {
- const [isVisible, setIsVisible] = useState(false)
  const { id, path } = useParams()
  const selectedCourseSchedule = CourseScheduleData.find(
   (item) => item.path === path
@@ -15,16 +14,27 @@ const Checkout = () => {
  const selectedBatch = selectedCourseSchedule.upcomingSchedulesData.filter(
   (item) => item.id === id
  )
+ const [orderSummaryEntries, setOrderSummaryEntries] = useState({
+  enteredPromoCode: '',
+  promoCodeSuccess: false,
+  totalDiscount: 0,
+  selectedQty: 1,
+  currency: '',
+  courseFees: 0,
+  grandTotal: 0,
+ })
 
- const toggleVisibility = () => {
-  setIsVisible(!isVisible)
+ const handleOrderSummaryEntries = (newDetails) => {
+  setOrderSummaryEntries(newDetails)
  }
+
+ const orderSummaryDetails = { ...selectedBatch[0], ...orderSummaryEntries }
 
  return (
   <div
    style={{
-    marginTop: '70px',
-    paddingBottom: '20px',
+    margin: '70px 0 -70px 0',
+    paddingBottom: '70px',
     backgroundColor: 'rgb(230, 230, 230)',
    }}
   >
@@ -45,7 +55,11 @@ const Checkout = () => {
       </span>
      </div>
      {selectedBatch.map((item) => (
-      <OrderSummary item={item} key={id} />
+      <OrderSummary
+       item={item}
+       key={id}
+       handleOrderSummaryEntries={handleOrderSummaryEntries}
+      />
      ))}
     </div>
 
@@ -53,47 +67,25 @@ const Checkout = () => {
      <div className={styles.checkOutTitles}>
       <h4 style={{ fontWeight: 'bolder' }}>1. Basic Information</h4>
      </div>
-     <BasicInformation
-      toggleVisibility={toggleVisibility}
-      selectedBatch={selectedBatch}
-     />
+     <BasicInformation orderSummaryDetails={orderSummaryDetails} />
     </div>
    </div>
 
-   <div className={styles.securePaymentContainer} id='securePayment'>
-    <div className={styles.checkOutTitles}>
-     <h4 style={{ fontWeight: 'bolder' }}>2. Secure Payment</h4>
+   <div className={styles.trustBatchesContainer}>
+    <div>
+     <img src='/images/Moneyback.jpeg' alt='' height='70px' />
+     <img src='/images/SSL.jpeg' alt='' height='70px' />
     </div>
-    {isVisible && (
-     <div>
-      <div className={styles.securePayInnerContainer}>
-       <div>
-        <img src='/images/stripe.png' alt='stripe' height='50px' />
-       </div>
-       <div>
-        <img src='/images/Paypal.png' alt='Paypal' height='35px' />
-       </div>
-      </div>
-
-      <hr />
-      <div className={styles.trustBatchesContainer}>
-       <div>
-        <img src='/images/Moneyback.jpeg' alt='' height='70px' />
-        <img src='/images/SSL.jpeg' alt='' height='70px' />
-       </div>
-       <p>
-        Transactions on this site are safe, secure & PCI-DSS complaint as
-        indicated by the secure lock in your address bar. Over 500,000+ users
-        like you have enrolled for courses.
-       </p>
-       <img
-        src='/images/securedPayments.png'
-        alt='secured payments'
-        height='70px'
-       />
-      </div>
-     </div>
-    )}
+    <p>
+     Transactions on this site are safe, secure & PCI-DSS complaint as indicated
+     by the secure lock in your address bar. Over 500,000+ users like you have
+     enrolled for courses.
+    </p>
+    <img
+     src='/images/securedPayments.png'
+     alt='secured payments'
+     height='70px'
+    />
    </div>
   </div>
  )

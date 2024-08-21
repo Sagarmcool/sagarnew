@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './QueryForm.module.css'
 import InfoIcon from '@mui/icons-material/Info'
 
-const QueryForm = ({ setQueryStatus }) => {
+const QueryForm = () => {
  const [QueryFormData, setQueryFormData] = useState({
   queryName: '',
   queryContactNumber: '',
@@ -10,6 +10,8 @@ const QueryForm = ({ setQueryStatus }) => {
   queryMessage: '',
  })
  const [queryFormErrors, setQueryFormErrors] = useState({})
+ const [openModal, setOpenModal] = useState(false)
+ const [queryStatusMessage, setQueryStatusMessage] = useState('')
 
  const handleChange = (e) => {
   const { name, value } = e.target
@@ -17,6 +19,10 @@ const QueryForm = ({ setQueryStatus }) => {
    ...QueryFormData,
    [name]: value,
   })
+
+  if (queryFormErrors[name]) {
+   setQueryFormErrors({ ...queryFormErrors, [name]: '' })
+  }
  }
 
  const validate = () => {
@@ -52,8 +58,10 @@ const QueryForm = ({ setQueryStatus }) => {
    })
     .then((res) => {
      if (res.ok) {
-      setQueryStatus('Query Sent Successfully')
-      // setQueryModal(true)
+      setQueryStatusMessage(
+       "Query Sent Successfully. We'll get back to you promptly."
+      )
+      setOpenModal(true)
       setQueryFormData({
        queryName: '',
        queryContactNumber: '',
@@ -63,19 +71,23 @@ const QueryForm = ({ setQueryStatus }) => {
      } else {
       res.json().then((data) => {
        if (Object.hasOwn(data, 'errors')) {
-        setQueryStatus(data.errors.map((err) => err.message).join(', '))
+        setQueryStatusMessage(data.errors.map((err) => err.message).join(', '))
        } else {
-        setQueryStatus('Failed to send email')
+        setQueryStatusMessage('Failed to send email')
        }
       })
      }
     })
     .catch(() => {
-     setQueryStatus('Failed to send email')
+     setQueryStatusMessage('Failed to send email')
     })
   } else {
    setQueryFormErrors(errors)
   }
+ }
+
+ const modalClose = () => {
+  setOpenModal(false)
  }
 
  return (
@@ -167,6 +179,16 @@ const QueryForm = ({ setQueryStatus }) => {
      </button>
     </div>
    </form>
+   {/* {queryStatusMessage && <p>{queryStatusMessage}</p>} */}
+
+   {openModal && (
+    <div className={styles.queryModal}>
+     <div className={styles.queryModalContent}>
+      <p>{queryStatusMessage}</p>
+      <button onClick={modalClose}>Close</button>
+     </div>
+    </div>
+   )}
   </>
  )
 }

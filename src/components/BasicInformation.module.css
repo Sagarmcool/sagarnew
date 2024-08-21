@@ -17,13 +17,11 @@
 
 .basicInfoProceedBtn {
  padding: 10px 40px;
- font-size: 20px;
  font-weight: bold;
- letter-spacing: 2.5px;
+ letter-spacing: 1px;
  cursor: pointer;
  color: white;
  background-color: orange;
- border: none;
  border-radius: 10px;
  transition: 0.25s all;
  border: 2px solid orange;

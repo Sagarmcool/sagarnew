@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './ContactUs.module.css'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import CallIcon from '@mui/icons-material/Call'
@@ -8,12 +9,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import XIcon from '@mui/icons-material/X'
 import Instagram from '@mui/icons-material/Instagram'
 import QueryForm from '../components/QueryForm'
-import Modal from '../components/Modal'
 
 const ContactUs = () => {
- const [queryStatus, setQueryStatus] = useState('')
- console.log('queryStatus:', queryStatus)
-
  return (
   <div className={styles.ContactUsContainer}>
    <div className={styles.contactInfoContainer}>
@@ -30,7 +27,7 @@ const ContactUs = () => {
      <CallIcon
       style={{ color: 'orange', fontSize: '20px', margin: '0 15px' }}
      />{' '}
-     (+1) 12345 67890
+     +1 256-607-9830
     </div>
     <div style={{ margin: '15px auto' }}>
      <MailIcon
@@ -39,22 +36,33 @@ const ContactUs = () => {
      support@smartranx.com
     </div>
     <div className={styles.contactUsIconsContainer}>
-     <FacebookIcon
-      className={styles.contactUsIcon}
-      style={{ color: '#737373', fontSize: '30px' }}
-     />
-     <LinkedInIcon
-      className={styles.contactUsIcon}
-      style={{ color: '#737373', fontSize: '30px' }}
-     />
-     <XIcon
-      className={styles.contactUsIcon}
-      style={{ color: '#737373', fontSize: '30px' }}
-     />
-     <Instagram
-      className={styles.contactUsIcon}
-      style={{ color: '#737373', fontSize: '30px' }}
-     />
+     <Link
+      to='https://www.facebook.com/smartranxeducationcentre?mibextid=ZbWKwL'
+      target='_blank'
+     >
+      <FacebookIcon
+       className={styles.contactUsIcon}
+       style={{ fontSize: '30px' }}
+      />
+     </Link>
+     <Link to='https://www.linkedin.com/company/smartranx/' target='_blank'>
+      <LinkedInIcon
+       className={styles.contactUsIcon}
+       style={{ fontSize: '30px' }}
+      />
+     </Link>
+     <Link to='https://x.com/SmartranxEdu' target='_blank'>
+      <XIcon className={styles.contactUsIcon} style={{ fontSize: '30px' }} />{' '}
+     </Link>
+     <Link
+      to='https://www.instagram.com/smartranx?igsh=cHQ3a2xxYjhjamo='
+      target='_blank'
+     >
+      <Instagram
+       className={styles.contactUsIcon}
+       style={{ fontSize: '30px' }}
+      />
+     </Link>
     </div>
    </div>
 
@@ -62,10 +70,8 @@ const ContactUs = () => {
     <div className={styles.checkOutTitles}>
      <h4 style={{ fontWeight: 'bolder' }}>Drop a Query!</h4>
     </div>
-    <QueryForm setQueryStatus={setQueryStatus} />
+    <QueryForm />
    </div>
-
-   {queryStatus && <Modal />}
   </div>
  )
 }

@@ -1,35 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './OrderSummary.module.css'
 import DiscountIcon from '@mui/icons-material/Discount'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 import { PromoData } from '../Data'
 
-const OrderSummary = ({ item }) => {
+const OrderSummary = ({ item, handleOrderSummaryEntries }) => {
  const coursePrice = item.coursePrice.split(' ')
  const price = Number(coursePrice[coursePrice.length - 1])
 
  const [quantity, setQuantity] = useState(1)
  const [enteredPromoCode, setEnteredPromoCode] = useState('')
+ const [promoCodeSuccess, setPromoCodeSuccess] = useState(false)
  const [promoMsg, setPromoMsg] = useState('')
  const [promoMsgColor, setPromoMsgColor] = useState('')
- const [totalDiscount, setTotalDiscount] = useState(null)
+ const [totalDiscount, setTotalDiscount] = useState(0)
+ const [courseFees, setCourseFees] = useState(price)
+ const [grandTotal, setGrandTotal] = useState(courseFees)
 
- const handleIncrement = () => {
-  setQuantity((prevQty) => prevQty + 1)
-  setEnteredPromoCode('')
-  setPromoMsg('')
-  setTotalDiscount(null)
- }
+ useEffect(() => {
+  const newGrandTotal = courseFees - totalDiscount
+  setGrandTotal(newGrandTotal)
 
- const handleDecrement = () => {
-  setQuantity((prevQty) => prevQty - 1)
-  setEnteredPromoCode('')
-  setPromoMsg('')
-  setTotalDiscount(null)
- }
-
- const courseFees = (quantity * price).toFixed(0)
- const grandTotal = courseFees - totalDiscount
+  handleOrderSummaryEntries({
+   enteredPromoCode,
+   promoCodeSuccess,
+   totalDiscount,
+   selectedQty: quantity,
+   currency: coursePrice[0],
+   courseFees,
+   grandTotal: newGrandTotal,
+  })
+ }, [enteredPromoCode, promoCodeSuccess, totalDiscount, quantity, courseFees])
 
  const handlePromoCode = () => {
   let promoData = PromoData.find(
@@ -39,12 +40,26 @@ const OrderSummary = ({ item }) => {
   if (promoData) {
    const discountAmount = (courseFees * promoData.discount) / 100
    setTotalDiscount(discountAmount.toFixed(0))
+   setPromoCodeSuccess(true)
    setPromoMsg('Offer applied successfully')
    setPromoMsgColor('green')
   } else {
-   setTotalDiscount(null)
+   setTotalDiscount(0)
+   setPromoCodeSuccess(false)
    setPromoMsg('Invalid Promo Code')
    setPromoMsgColor('red')
+  }
+ }
+
+ const handleQtyChange = (increment) => {
+  const newQty = quantity + increment
+  if (newQty > 0) {
+   setQuantity(newQty)
+   setCourseFees(Number((newQty * price).toFixed(0)))
+   setEnteredPromoCode('')
+   setPromoCodeSuccess(false)
+   setPromoMsg('')
+   setTotalDiscount(0)
   }
  }
 
@@ -103,11 +118,11 @@ const OrderSummary = ({ item }) => {
    >
     <strong>Quantity:</strong>
     <div className={styles.qtyContainer}>
-     <button onClick={handleDecrement} disabled={quantity === 1}>
+     <button onClick={() => handleQtyChange(-1)} disabled={quantity == 1}>
       -
      </button>
      <p style={{ margin: '0 10px', fontWeight: 'bolder' }}>{quantity}</p>
-     <button onClick={handleIncrement}>+</button>
+     <button onClick={() => handleQtyChange(1)}>+</button>
     </div>
    </div>
    <p
