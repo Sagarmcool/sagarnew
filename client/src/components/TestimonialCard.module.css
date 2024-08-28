@@ -1,0 +1,68 @@
+.TestimonialCard {
+ width: 100%;
+ max-width: 500px;
+ min-width: 250px;
+ padding-top: 20px;
+ position: relative;
+ cursor: pointer;
+}
+
+.top {
+ width: 90%;
+ height: auto;
+ margin: auto;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+}
+
+.imageDiv {
+ width: 150px;
+ height: auto;
+ position: relative;
+ cursor: pointer;
+}
+
+.profileImg {
+ width: 80px;
+ height: auto;
+ border-radius: 50%;
+ object-fit: cover;
+}
+
+.linkedInImg {
+ width: 30px;
+ height: 30px;
+ border-radius: 50%;
+ position: absolute;
+ right: 0;
+ bottom: 0;
+ transform: translate(-75%, -20%);
+ border: 3px solid white;
+}
+
+.textDiv {
+ width: auto;
+ margin-left: 30px;
+}
+
+.textDiv > p {
+ margin: 10px 0;
+}
+
+.mid {
+ width: 90%;
+ height: auto;
+ margin: 20px auto;
+}
+
+.bottom {
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ background-color: orange;
+ height: 7px;
+ width: 100%;
+ border-bottom-left-radius: 10px;
+ border-bottom-right-radius: 10px;
+}

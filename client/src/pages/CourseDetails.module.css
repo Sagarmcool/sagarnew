@@ -1,0 +1,230 @@
+.CourseDetails {
+ width: 100%;
+ margin-top: 3.5rem;
+ height: auto;
+}
+
+.topDiv {
+ width: 100%;
+ height: auto;
+ margin-bottom: 30px;
+ background: linear-gradient(110deg, white 60%, orange 40%);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.topLeft {
+ width: 50%;
+ height: auto;
+ padding: 20px 20px 20px 40px;
+}
+
+.topRight {
+ width: 50%;
+ height: auto;
+ display: grid;
+ place-items: center;
+}
+
+@media screen and (max-width: 900px) {
+ .topDiv {
+  flex-direction: column;
+  background: white;
+ }
+
+ .topLeft {
+  width: 100%;
+ }
+
+ .topRight {
+  width: 100%;
+  background-color: orange;
+ }
+}
+
+.reviewImagesDiv {
+ width: 100%;
+ height: auto;
+ margin: 30px 0;
+ display: flex;
+ align-items: center;
+}
+
+.reviewImagesDiv img {
+ height: 50px;
+ width: auto;
+}
+
+@media screen and (max-width: 500px) {
+ .reviewImagesDiv img {
+  height: 30px;
+ }
+}
+
+.scheduleButton {
+ padding: 10px 20px;
+ margin: 20px 0;
+ font-size: 15px;
+ font-weight: bold;
+ letter-spacing: 1.25px;
+ cursor: pointer;
+ color: white;
+ background-color: rgb(41, 113, 229);
+ border: none;
+ border-radius: 10px;
+ transition: 0.25s all ease-in;
+ border: 2px solid rgb(41, 113, 229);
+}
+
+.scheduleButton:hover {
+ background-color: white;
+ color: rgb(41, 113, 229);
+}
+
+.rightImageDiv {
+ width: 80%;
+ height: auto;
+ border: 10px solid white;
+ border-radius: 10px;
+ margin: 20px;
+}
+
+.rightImage {
+ width: 100%;
+ height: auto;
+ border-radius: 10px;
+ border-top-right-radius: 0;
+ border-bottom-right-radius: 0;
+}
+
+.container {
+ padding: 20px;
+ height: auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+}
+
+.container > .aside {
+ width: 70%;
+ height: auto;
+}
+
+.courseContentNavbar {
+ background: #ededed;
+ width: 100%;
+ height: auto;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ font-size: 15px;
+ line-height: 40px;
+ font-weight: bolder;
+ text-align: center;
+ padding: 5px 0;
+ position: -webkit-sticky;
+ position: sticky;
+ top: 4.4rem;
+}
+
+@media screen and (max-width: 600px) {
+ .courseContentNavbar {
+  font-size: 12px;
+ }
+}
+
+@media screen and (max-width: 450px) {
+ .courseContentNavbar {
+  font-size: 10px;
+ }
+}
+
+.courseContentNavbar > a {
+ text-decoration: none;
+ color: black;
+}
+
+.courseContentNavbar > a:hover {
+ color: orange;
+ border-bottom: 2px solid orange;
+ cursor: pointer;
+}
+
+.scheduleForm {
+ width: 28%;
+ height: auto;
+ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+ margin: 20px 0;
+ position: -webkit-sticky;
+ position: sticky;
+ top: 4.4rem;
+}
+
+@media screen and (max-width: 900px) {
+ .container {
+  flex-direction: column;
+ }
+
+ .container > .aside {
+  width: 100%;
+ }
+
+ .scheduleForm {
+  width: 80%;
+  min-width: 300px;
+  margin: 20px auto;
+ }
+}
+
+.epgDiv {
+ width: 100%;
+ height: auto;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+}
+
+.epg,
+.mbg {
+ color: rgb(40, 158, 40);
+ border: 1px solid;
+ width: auto;
+ margin: 0 20px;
+ padding: 8px;
+ border-radius: 10px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.twoColumnList {
+ width: 100%;
+ height: auto;
+ display: flex;
+}
+
+.columnList {
+ width: 50%;
+}
+
+.columnList li {
+ list-style: none;
+ padding: 10px;
+}
+
+.keyFeaturesDiv {
+ margin: 20px 0;
+}
+
+.keyFeaturesDiv > ul {
+ list-style-type: disc;
+}
+
+.keyFeaturesDiv > ul > li::marker {
+ color: orange;
+}
+
+.scheduleForm > img {
+ width: 100%;
+ height: auto;
+}

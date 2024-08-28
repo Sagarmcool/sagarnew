@@ -1,0 +1,16 @@
+.accordionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(250, 250, 250);
+  cursor: pointer;
+  border-bottom: 1px solid orange;
+  transition: all 1s ease;
+}
+
+.accordionDescription {
+  padding: 10px;
+  border-bottom: 1px solid orange;
+  text-align: justify;
+}
