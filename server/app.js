@@ -80,6 +80,7 @@ app.get('/retrieve-session', async (req, res) => {
    amount_total: session.amount_total,
    customer_details: session.customer_details,
    metadata: session.metadata,
+   payment_intent: session.payment_intent.id,
   })
  } catch (error) {
   res.status(500).json({ error: error.message })
