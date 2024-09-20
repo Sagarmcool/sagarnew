@@ -2,10 +2,8 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
-// const secretKey =
-//  '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'
 const secretKey =
- 'sk_test_51PgmDEFd5Ku8yrHot5dGnZIC5A77ZUVIb03rCFOfAY1hzGuvjlBUxWjWZoHNfCVAo1qBdgInV067tKyNxJH8jvHa00nEWpBiAl'
+ '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'
 
 const stripe = require('stripe')(`${secretKey}`)
 
@@ -37,8 +35,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
    ],
    mode: 'payment',
    success_url:
-    'http://localhost:3000/PaymentSuccess?session_id={CHECKOUT_SESSION_ID}',
-   cancel_url: 'http://localhost:3000/PaymentError',
+    'https://smartranx.com/PaymentSuccess?session_id={CHECKOUT_SESSION_ID}',
+   cancel_url: 'https://smartranx.com/PaymentError',
    metadata: {
     title,
     batchDates,
@@ -47,8 +45,10 @@ app.post('/api/create-checkout-session', async (req, res) => {
     grandTotal,
    },
   })
+  console.log('Stripe session created: ', session)
   res.json({ id: session.id })
  } catch (error) {
+  console.log('Error creating Stripe session: ', error.message)
   res.status(500).json({ error: error.message })
  }
 })

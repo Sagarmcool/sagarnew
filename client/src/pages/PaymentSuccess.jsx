@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 const PaymentSuccess = () => {
  const [paymentDetails, setPaymentDetails] = useState(null)
  const location = useLocation()
+ const [error, setError] = useState(null)
 
  useEffect(() => {
   const fetchSessionDetails = async () => {
@@ -15,12 +16,16 @@ const PaymentSuccess = () => {
    if (sessionId) {
     try {
      const response = await fetch(
-      `http://localhost:7000/retrieve-session?sessionId=${sessionId}`
+      `https://smartranx.com/retrieve-session?sessionId=${sessionId}`
      )
+     if (!response.ok) {
+      throw new Error('Failed to fetch payment session')
+     }
      const data = await response.json()
      setPaymentDetails(data)
     } catch (error) {
      console.error('Error fetching session details: ', error)
+     setError('Failed to retrieve payment details. Please contact support')
     }
    }
   }
@@ -32,6 +37,15 @@ const PaymentSuccess = () => {
   return (
    <div className={styles.checkoutLoadingOverlay}>
     <div className={styles.checkoutSpinner}></div>
+    <p style={{ margin: '30px' }}>Loading payment details...</p>
+   </div>
+  )
+ }
+
+ if (error) {
+  return (
+   <div style={{ marginTop: '70px', textAlign: 'center' }}>
+    <h3> {error}</h3>
    </div>
   )
  }
@@ -59,6 +73,7 @@ const PaymentSuccess = () => {
      marginBottom: '0',
     }}
     onClick={() => console.log(paymentDetails)}
+    aria-live='polite'
    >
     <CheckCircleIcon style={{ color: 'green', fontSize: '35px' }} /> Payment
     Successful
@@ -92,19 +107,19 @@ const PaymentSuccess = () => {
       <td>
        <strong>Course Title:</strong>
       </td>
-      <td>{metadata.title}</td>
+      <td>{metadata.title || 'N/A'}</td>
      </tr>
      <tr>
       <td>
        <strong>Batch Timings:</strong>
       </td>
-      <td>{metadata.batchTimings}</td>
+      <td>{metadata.batchTimings || 'N/A'}</td>
      </tr>
      <tr>
       <td>
        <strong>Batch Dates:</strong>
       </td>
-      <td>{metadata.batchDates}</td>
+      <td>{metadata.batchDates || 'N/A'}</td>
      </tr>
     </tbody>
    </table>
