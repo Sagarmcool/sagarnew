@@ -4972,7 +4972,7 @@ export const CourseScheduleData = [
         batchTimings: '09:00 am - 05:00 pm, central time',
         batchMode: 'Live Online Classroom',
         courseStrikedPrice: 'USD 1599',
-        coursePrice: 'USD 999',
+        coursePrice: 'USD 1',
         courseLastChanceImg: 'lastChance.jpeg',
         courseLimitedSpotsImg: 'limitedSpots.jpeg',
       },
