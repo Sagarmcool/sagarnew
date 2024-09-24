@@ -57,7 +57,7 @@ const BasicInformation = ({ orderSummaryDetails, setLoading }) => {
       const apiUrl =
         window.location.hostname === 'localhost'
           ? 'http://localhost:7000/api/create-checkout-session'
-          : 'https://smartranx.com/api/create-checkout-session'
+          : 'http://smartranx.com/api/create-checkout-session'
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -66,7 +66,6 @@ const BasicInformation = ({ orderSummaryDetails, setLoading }) => {
         },
         body: JSON.stringify({ candidateCourseData }),
       })
-
 
       const session = await response.json()
 
