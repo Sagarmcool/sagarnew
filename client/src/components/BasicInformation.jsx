@@ -67,6 +67,7 @@ const BasicInformation = ({ orderSummaryDetails, setLoading }) => {
         body: JSON.stringify({ candidateCourseData }),
       })
 
+
       const session = await response.json()
 
       if (session.id) {
