@@ -7461,6 +7461,11 @@ export const PromoData = [
     promoCode: 'MEGA15',
     discount: 15,
   },
+  {
+    id: uuidv4(),
+    promoCode: 'SUPER40',
+    discount: 40,
+  },
 ]
 
 export const TestimonialsData = [
