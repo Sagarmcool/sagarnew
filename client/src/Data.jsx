@@ -5156,18 +5156,6 @@ export const CourseScheduleData = [
         courseLastChanceImg: 'lastChance.jpeg',
         courseLimitedSpotsImg: 'limitedSpots.jpeg',
       },
-      {
-        id: 'pmpip250107-250111',
-        title: 'PMP® Online Certification',
-        batchDates: 'Jan 07 - Jan 11, 2025,',
-        batchWeek: 'Weekdays',
-        batchTimings: '09:00 am - 05:00 pm, central time',
-        batchMode: 'In Person Classroom',
-        courseStrikedPrice: 'USD 2599',
-        coursePrice: 'USD 2',
-        courseLastChanceImg: 'lastChance.jpeg',
-        courseLimitedSpotsImg: 'limitedSpots.jpeg',
-      },
     ],
   },
   {
